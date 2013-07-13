@@ -61,6 +61,7 @@
                     }
                 }
             }
+            
         try {
             func(module, module.exports, require)
         } catch(err) {
