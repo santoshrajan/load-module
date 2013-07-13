@@ -12,50 +12,50 @@ Once you are done testing just browserify your "main" script and bundle it.
 
 #### Example (read comments for more info)
 
-    &lt;!DOCTYPE html&gt;
-    &lt;html lang=&quot;en&quot;&gt;
-    &lt;head&gt;
-      &lt;title&gt;load-module example&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>load-module example</title>
+    </head>
+    <body>
     
-      &lt;!-- You should load browserified node modules first, if you are going to require
-           them in your modules. Script below loads the browserified &quot;tape&quot; test module
-           from browserified cdn. --&gt;
-      &lt;script type=&quot;text/javascript&quot; src=&quot;http://wzrd.in.nyud.net/bundle/tape&quot;&gt;&lt;/script&gt;
+      <!-- You should load browserified node modules first, if you are going to require
+           them in your modules. Script below loads the browserified "tape" test module
+           from browserified cdn. -->
+      <script type="text/javascript" src="http://wzrd.in.nyud.net/bundle/tape"></script>
     
-      &lt;!-- We load &quot;browsertest.js&quot; an un-browserified module. Note that the type is
-           &quot;text/node_module&quot;, and we give it a module id &quot;tests&quot; so that we can require
+      <!-- We load "browsertest.js" an un-browserified module. Note that the type is
+           "text/node_module", and we give it a module id "tests" so that we can require
            it in other modules. Unlike JavaScript un-browserified modules are NOT loaded
-           in the global scope.--&gt;
-      &lt;script type=&quot;text/node_module&quot; id=&quot;tests&quot; src=&quot;./js/browsertest.js&quot;&gt;&lt;/script&gt;
+           in the global scope.-->
+      <script type="text/node_module" id="tests" src="./js/browsertest.js"></script>
     
-      &lt;!-- You can also have inline un-browserified modules. Note that each script of type
-           &quot;text/node_module&quot; is treated as a module and NOT loaded in the global scope
-           like javascript scripts. --&gt;
-      &lt;script type=&quot;text/node_module&quot; id=&quot;square&quot;&gt;
+      <!-- You can also have inline un-browserified modules. Note that each script of type
+           "text/node_module" is treated as a module and NOT loaded in the global scope
+           like javascript scripts. -->
+      <script type="text/node_module" id="square">
         module.exports = function(x) {
           return x * x
         }
-      &lt;/script&gt;
+      </script>
     
-      &lt;!-- You must include a module with id &quot;main&quot; which is the entry point to your 
-            program. Both &quot;square&quot; and &quot;main&quot; module need not be inline.--&gt;
-      &lt;script type=&quot;text/node_module&quot; id=&quot;main&quot;&gt;
+      <!-- You must include a module with id "main" which is the entry point to your 
+            program. Both "square" and "main" module need not be inline.-->
+      <script type="text/node_module" id="main">
     
-        require(&quot;tests&quot;) // we just want to run the tests module
+        require("tests") // we just want to run the tests module
     
-        var test = require(&quot;tape&quot;)
-            square = require(&quot;square&quot;)
+        var test = require("tape")
+            square = require("square")
     
-        test(&quot;Square Module Test&quot;, function(t) {
+        test("Square Module Test", function(t) {
           t.plan(1)
           t.equal(square(10), 100)
         })
-      &lt;/script&gt;
+      </script>
     
-      &lt;!-- load-module.js must be the last script loaded --&gt;
-      &lt;script type=&quot;text/javascript&quot; src=&quot;./js/load-module.js&quot;&gt;&lt;/script&gt;
+      <!-- load-module.js must be the last script loaded -->
+      <script type="text/javascript" src="./js/load-module.js"></script>
     
-    &lt;/body&gt;
-    &lt;/html&gt;
+    </body>
+    </html>
