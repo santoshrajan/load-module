@@ -4,9 +4,9 @@
 If you are like me, and just want to hit "reload" every time you make changes, this is for you.
 
 #### How does it work.
-Set your un-browserified scripts to 'type="text/node_module"' and 'id="mymodule"'. Require "mymodule" in other scripts. You ahould also have a module with id "main" as the entry point to your program.
+Set your un-browserified scripts to `type="text/node_module"` and `id="mymodule"`. Require `mymodule` in other scripts. You should also have a module with id `main` as the entry point to your program.
 
-Finally include lode-module.js as the last script to be loaded.
+Finally include `lode-module.js` as the last script to be loaded.
 
 Once you are done testing just browserify your "main" script and bundle it.
 
