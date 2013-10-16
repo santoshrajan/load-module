@@ -13,7 +13,7 @@
         })
 
     function doParallel(handlers, callback) {
-        var counter = handlers.length
+        var counter = handlers.length,
             done = function() {
                 --counter
                 if (counter === 0) {
